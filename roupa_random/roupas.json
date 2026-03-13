@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nome": "Camiseta Básica",
+    "tipo": "parte_cima",
+    "cor_principal": "branco",
+    "clima": "calor",
+    "ocasiao": "casual",
+    "imagem_url": "https://link-da-imagem.com/foto1.jpg"
+  },
+  {
+    "id": 2,
+    "nome": "Calça Jeans",
+    "tipo": "parte_baixo",
+    "cor_principal": "azul",
+    "clima": "calor",
+    "ocasiao": "casual",
+    "imagem_url": "https://link-da-imagem.com/foto2.jpg"
+  },
+  {
+    "id": 3,
+    "nome": "Tênis All Star",
+    "tipo": "calcado",
+    "cor_principal": "preto",
+    "clima": "todos",
+    "ocasiao": "casual",
+    "imagem_url": "https://link-da-imagem.com/foto3.jpg"
+  }
+]

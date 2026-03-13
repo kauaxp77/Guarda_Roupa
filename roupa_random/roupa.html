@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guarda-Roupa Virtual do Kauã</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==============================
+           CSS: O ACABAMENTO BONITINHO
+           ============================== */
+        
+        :root {
+            /* Nossa paleta de cores moderna */
+            --cor-fundo: #fdfdfd; /* Quase branco */
+            --cor-primaria: #00d2d3; /* Azul Turquesa vibrante */
+            --cor-secundaria: #ff9f43; /* Laranja suave (para detalhes) */
+            --cor-texto: #2d3436; /* Cinza bem escuro */
+            --cor-label: #636e72; /* Cinza médio */
+            --cor-card: #ffffff; /* Branco puro */
+            --sombra: 0 10px 30px rgba(0,0,0,0.06); /* Sombra suave para profundidade */
+            --transicao: 0.3s ease; /* Tempo de animação */
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; /* Usando a nova fonte */
+            display: flex; 
+            justify-content: center; 
+            align-items: center; /* Centraliza verticalmente também */
+            min-height: 100vh;
+            background-color: var(--cor-fundo); 
+            margin: 0; 
+            padding: 20px; 
+            color: var(--cor-texto);
+        }
+
+        /* Container Principal do "App" */
+        .app-container { 
+            background: var(--cor-card); 
+            width: 100%; 
+            max-width: 380px; /* Largura perfeita para simular um celular */
+            padding: 25px; 
+            border-radius: 30px; /* Bordas bem arredondadas */
+            box-shadow: var(--sombra); 
+            text-align: center; 
+            overflow: hidden; /* Garante que nada saia das bordas arredondadas */
+        }
+
+        h2 { 
+            color: var(--cor-texto);
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        /* Estilo dos "Cartões" de Peça de Roupa */
+        .peca { 
+            margin-bottom: 20px; 
+            background: var(--cor-card);
+            border: 1px solid #f1f1f1; /* Borda finíssima */
+            border-radius: 18px;
+            padding: 15px;
+            position: relative; /* Para posicionar o label */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Label (Cima, Baixo, Pé) */
+        .label-categoria { 
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: var(--cor-label);
+            background: #f8f9fa;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* Título da Roupa */
+        .nome-roupa { 
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--cor-texto);
+            margin: 0 0 10px 0;
+        }
+
+        /* Estilo da Imagem */
+        img { 
+            width: 100%; 
+            max-width: 200px; /* Impede que a foto fique gigante */
+            height: 200px; /* Força um quadrado perfeito */
+            object-fit: contain; /* Garante que a roupa apareça inteira sem cortar */
+            border-radius: 12px; 
+            background-color: #fafafa; /* Fundo suave se a foto tiver transparência */
+        }
+
+        /* O Botão Principal */
+        button { 
+            background: var(--cor-primaria);
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, #00b894 100%); /* Gradiente suave */
+            color: white; 
+            border: none; 
+            padding: 18px 20px; 
+            font-size: 18px; 
+            border-radius: 15px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-weight: 600; 
+            font-family: 'Poppins', sans-serif;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 210, 211, 0.3); /* Sombra da cor do botão */
+            transition: var(--transicao);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Espaço entre o ícone e o texto */
+        }
+
+        /* Efeito de Hover (passar o mouse) no botão */
+        button:hover { 
+            transform: translateY(-3px) scale(1.02); /* Sobe um pouco e cresce */
+            box-shadow: 0 6px 20px rgba(0, 210, 211, 0.4);
+        }
+
+        /* Efeito de Active (clicar) no botão */
+        button:active {
+            transform: translateY(1px) scale(0.98); /* Dá um efeito de "apertar" */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <h2>Guarda-Roupa 📱</h2>
+    
+    <div class="peca">
+        <span class="label-categoria">Parte de Cima</span>
+        <img id="img-cima" src="https://via.placeholder.com/300?text=Sorteie+o+Look" alt="Cima">
+        <p id="nome-cima" class="nome-roupa">-</p>
+    </div>
+    
+    <div class="peca">
+        <span class="label-categoria">Parte de Baixo</span>
+        <img id="img-baixo" src="https://via.placeholder.com/300?text=Sorteie+o+Look" alt="Baixo">
+        <p id="nome-baixo" class="nome-roupa">-</p>
+    </div>
+    
+    <div class="peca">
+        <span class="label-categoria">Calçado</span>
+        <img id="img-pe" src="https://via.placeholder.com/300?text=Sorteie+o+Look" alt="Pé">
+        <p id="nome-pe" class="nome-roupa">-</p>
+    </div>
+
+    <button onclick="gerarLookNaTela()">
+        <span>🎲</span> Gerar Look de Hoje
+    </button>
+</div>
+
+<script>
+    // Mantenho o mesmo JavaScript funcional de antes, 
+    // apenas com fotos melhores e mais adequadas para o novo visual.
+    
+    const guardaRoupa = [
+        // Peças com fotos Reais para teste visual
+        { nome: 'Camiseta Básica Preta', tipo: 'cima', img: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80' },
+        { nome: 'Moletom Cinza Confort', tipo: 'cima', img: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&q=80' },
+        { nome: 'Jaqueta Jeans', tipo: 'cima', img: 'https://images.unsplash.com/photo-1576871333019-220ac734c521?w=400&q=80' },
+        
+        { nome: 'Calça Jeans Skinny', tipo: 'baixo', img: 'https://images.unsplash.com/photo-1542272604-78021c37d6ec?w=400&q=80' },
+        { nome: 'Bermuda Sarja Bege', tipo: 'baixo', img: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&q=80' },
+        { nome: 'Calça Cargo Preta', tipo: 'baixo', img: 'https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?w=400&q=80' },
+        
+        { nome: 'Tênis Vans Authentic', tipo: 'pe', img: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&q=80' },
+        { nome: 'Tênis Running Esportivo', tipo: 'pe', img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80' },
+        { nome: 'Bota Coturno Couro', tipo: 'pe', img: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80' }
+    ];
+
+    function sortear(lista) {
+        return lista[Math.floor(Math.random() * lista.length)];
+    }
+
+    function gerarLookNaTela() {
+        const partesDeCima = guardaRoupa.filter(p => p.tipo === 'cima');
+        const partesDeBaixo = guardaRoupa.filter(p => p.tipo === 'baixo');
+        const calcados = guardaRoupa.filter(p => p.tipo === 'pe');
+
+        const lookCima = sortear(partesDeCima);
+        const lookBaixo = sortear(partesDeBaixo);
+        const lookPe = sortear(calcados);
+
+        // Atualiza a tela com uma animação leve de opacidade
+        const imgs = [document.getElementById('img-cima'), document.getElementById('img-baixo'), document.getElementById('img-pe')];
+        imgs.forEach(img => img.style.opacity = 0); // Esconde
+
+        setTimeout(() => {
+            document.getElementById('img-cima').src = lookCima.img;
+            document.getElementById('nome-cima').innerText = lookCima.nome;
+
+            document.getElementById('img-baixo').src = lookBaixo.img;
+            document.getElementById('nome-baixo').innerText = lookBaixo.nome;
+
+            document.getElementById('img-pe').src = lookPe.img;
+            document.getElementById('nome-pe').innerText = lookPe.nome;
+            
+            imgs.forEach(img => img.style.opacity = 1); // Mostra com fade in
+            imgs.forEach(img => img.style.transition = 'opacity 0.5s ease');
+        }, 100);
+    }
+</script>
+
+</body>
+</html>
